@@ -1,2 +1,5 @@
-// add librairies here
-// ex import 'bootstrap'
+// IMPORT LIBRAIRES HERE
+// _______________________________________________________________
+
+
+// ex: import 'bootstrap'
