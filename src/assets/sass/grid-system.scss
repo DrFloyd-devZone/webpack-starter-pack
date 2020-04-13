@@ -1,0 +1,117 @@
+// PROJECT GRID SYSTEM
+// __________________________________________________________
+
+/*
+
+System simple à prendre en main disposant de :
+    - Container et items;
+    - Gestion des bp;
+    - Gestion des gouttières ou non;
+    - Offsets;
+    - Gestion du cadre du projet (max width du container, nombre de colonnes, gouttières, etc.)
+    - Gestion de la disposition des items (en ligne ou en colonnes)
+
+*/
+
+
+
+
+// VARIABLES
+
+
+// Desktop
+
+$lg-ContainerMaxWidth: 1440px;
+$lg-ContainerSideMargins: 80px;
+$lg-ColsNumber: 12;
+$lg-ColsGutters: 20px;
+
+
+// tablet
+
+$md-ContainerMaxWidth: 1024px;
+$md-ContainerSideMargins: 80px;
+$md-ColsNumber: 8;
+$md-ColsGutters: 20px;
+
+
+// mobile
+
+$sm-ContainerMaxWidth: 768px;
+$sm-ContainerSideMargins: 80px;
+$sm-ColsNumber: 4;
+$sm-ColsGutters: 20px;
+
+
+
+
+
+$lg-grid-width: 100% - (($lg-ContainerSideMargins * 2 / $lg-ContainerMaxWidth) * 100%);
+$md-grid-width: 100% - (($md-ContainerSideMargins * 2 / $md-ContainerMaxWidth) * 100%);
+$sm-grid-width: 100% - (($sm-ContainerSideMargins * 2 / $sm-ContainerMaxWidth) * 100%);
+
+$lg-gutter: (($lg-ColsGutters / ($lg-ContainerMaxWidth - ($lg-ContainerSideMargins * 2))) * 100%);
+$md-gutter: (($md-ColsGutters / ($md-ContainerMaxWidth - ($md-ContainerSideMargins * 2))) * 100%);
+$sm-gutter: (($sm-ColsGutters / ($sm-ContainerMaxWidth - ($sm-ContainerSideMargins * 2))) * 100%);
+
+
+
+// FUNCTIONS AND MiXINS
+@function col-width($i, $columns) {
+    @return 100% / $columns * $i;
+}
+  
+@mixin col-props($i, $columns, $gutter) {
+    box-sizing: border-box;
+    width: col-width($i, $columns);
+    padding-left: $gutter/2;
+    padding-right: $gutter/2;
+}
+  
+@mixin columns-loop($name, $columns, $gutter) {
+    @for $i from 0 through $columns {
+        &-#{$name}-#{$i} {
+            @include col-props($i, $columns, $gutter);
+        }
+        &-#{$name}-shift-#{$i} {
+            margin-left: col-width($i, $columns);
+        }
+    }
+}
+
+@mixin row-base($width) {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    max-width: $lg-ContainerMaxWidth;
+    width: $width;
+}
+
+
+
+
+// CLASSES
+.row {
+    @include row-base($lg-grid-width);
+    @media screen and (max-width: $md-ContainerMaxWidth) {
+      width: $md-grid-width;
+    }
+    @media screen and (max-width: $sm-ContainerMaxWidth) {
+      width: $sm-grid-width;
+    }
+    &--fw {
+      @include row-base(100%);
+    }
+  }
+  
+  .col {
+    @include columns-loop(lg, $lg-ColsNumber, $lg-gutter);
+    @media screen and (max-width: $md-ContainerMaxWidth) {
+      @include columns-loop(md, $md-ColsNumber, $md-gutter);
+    }
+    @media screen and (max-width: $sm-ContainerMaxWidth) {
+      @include columns-loop(sm, $sm-ColsNumber, $sm-gutter);
+    }
+  }
+

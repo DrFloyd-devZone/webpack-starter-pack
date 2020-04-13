@@ -2,6 +2,19 @@
 // __________________________________________________________
 
 
+// add img default style
+
+
+html {
+    box-sizing: border-box;
+}
+  
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 .align-flex-center-center{
     height: 100vh;
     width: 100%;
