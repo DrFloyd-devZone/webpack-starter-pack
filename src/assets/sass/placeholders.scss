@@ -1,0 +1,14 @@
+
+%rempimg {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    // @extend %rempimg;
+}
+
+%reset-btn {
+    background: none;
+    border: none;
+    outline: none;
+    // @extend %reset-btn;
+}

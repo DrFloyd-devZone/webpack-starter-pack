@@ -1,49 +1,30 @@
 // PROJECT GRID SYSTEM
 // __________________________________________________________
 
-/*
-
-System simple à prendre en main disposant de :
-    - Container et items;
-    - Gestion des bp;
-    - Gestion des gouttières ou non;
-    - Offsets;
-    - Gestion du cadre du projet (max width du container, nombre de colonnes, gouttières, etc.)
-    - Gestion de la disposition des items (en ligne ou en colonnes)
-
-*/
-
-
-
 
 // VARIABLES
 
 
 // Desktop
 
-$lg-ContainerMaxWidth: 1440px;
+$lg-ContainerMaxWidth: 1439px;
 $lg-ContainerSideMargins: 80px;
 $lg-ColsNumber: 12;
 $lg-ColsGutters: 20px;
 
-
 // tablet
 
-$md-ContainerMaxWidth: 1024px;
+$md-ContainerMaxWidth: 1023px;
 $md-ContainerSideMargins: 80px;
 $md-ColsNumber: 8;
 $md-ColsGutters: 20px;
 
-
 // mobile
 
-$sm-ContainerMaxWidth: 768px;
+$sm-ContainerMaxWidth: 767px;
 $sm-ContainerSideMargins: 80px;
 $sm-ColsNumber: 4;
 $sm-ColsGutters: 20px;
-
-
-
 
 
 $lg-grid-width: 100% - (($lg-ContainerSideMargins * 2 / $lg-ContainerMaxWidth) * 100%);
@@ -54,9 +35,7 @@ $lg-gutter: (($lg-ColsGutters / ($lg-ContainerMaxWidth - ($lg-ContainerSideMargi
 $md-gutter: (($md-ColsGutters / ($md-ContainerMaxWidth - ($md-ContainerSideMargins * 2))) * 100%);
 $sm-gutter: (($sm-ColsGutters / ($sm-ContainerMaxWidth - ($sm-ContainerSideMargins * 2))) * 100%);
 
-
-
-// FUNCTIONS AND MiXINS
+// FUNCTIONS AND MIXINS
 @function col-width($i, $columns) {
     @return 100% / $columns * $i;
 }
@@ -87,9 +66,6 @@ $sm-gutter: (($sm-ColsGutters / ($sm-ContainerMaxWidth - ($sm-ContainerSideMargi
     max-width: $lg-ContainerMaxWidth;
     width: $width;
 }
-
-
-
 
 // CLASSES
 .row {
