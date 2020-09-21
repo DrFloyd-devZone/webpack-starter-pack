@@ -1,0 +1,52 @@
+// PROJECT USEFUL CLASSES AND PLACEHOLDERS
+// ________________________________________________________________________________________
+
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+
+// Clear float elements
+// __________________________________________________________
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+
+// Hide element letting it readable for screen readers
+// __________________________________________________________
+
+%rempimg {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+  // @extend %rempimg;
+}
+
+
+// Reset button style
+// __________________________________________________________
+
+%reset-btn {
+  background: none;
+  border: none;
+  outline: none;
+  // @extend %reset-btn;
+}

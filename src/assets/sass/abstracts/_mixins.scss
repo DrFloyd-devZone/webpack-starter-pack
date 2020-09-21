@@ -1,0 +1,54 @@
+// PROJECT MIXINS
+// ________________________________________________________________________________________
+
+
+// Create a box
+// ________________________________________________________________________________________
+
+@mixin box($width, $height:$width) {
+    width: $width;
+    height: $height;
+}
+
+
+// Create a pseudo element base structure 
+// ________________________________________________________________________________________
+
+@mixin pseudo-el($display: block, $position: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $position;
+    // @include pseudo-el() on ::before & ::after.
+}
+
+
+// Responsive ratio
+// ________________________________________________________________________________________
+
+@mixin resp-ratio($x, $y, $pseudo-el: false, $pseudo: before) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo-el{
+        @if $pseudo == 'before' or $pseudo == 'after'{
+            &::#{$pseudo} {
+                @include pseudo-el();
+                width: 100%;
+                padding-top: $padding;
+            }
+        } 
+    } @else {
+        padding-top: $padding;
+    }
+    // @include resp-ratio(16, 9, true);
+}
+
+
+// Allow truncation and add ellipsis
+// ________________________________________________________________________________________
+
+@mixin trunc-etc($truncation-limit) {
+    max-width: $truncation-limit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // @include trunc-etc(6ch);
+}

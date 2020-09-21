@@ -2,6 +2,60 @@
 // __________________________________________________________
 
 
+// breakpoints variables and responsive mixin
+// ______________________________________________________________________________________
+
+$sm-bp: 768px;
+$md-bp: 1024px;
+$lg-bp: 1440px;
+
+$sm-range: (0, $sm-bp - 1px);
+$md-range: ($sm-bp, $md-bp - 1px);
+$lg-range: ($md-bp, $lg-bp - 1px);
+
+$md-down: $sm-bp - 1px;
+$lg-down: $md-bp - 1px;
+
+$breakpoints: (
+    ('sm', $sm-range),
+    ('md', $md-range),
+    ('lg', $lg-range),
+    ('xl', $lg-bp),
+    ('sm-only', $sm-range),
+    ('md-only', $md-range),
+    ('lg-only', $lg-range),
+    ('md-down', $md-down),
+    ('lg-down', $lg-down)
+);
+
+
+@mixin resp($media) {
+    @for $i from 1 through length($breakpoints) {
+        $breakpoint: nth($breakpoints, $i);
+        $name: nth($breakpoint, 1);
+        $value: nth($breakpoint, 2);
+ 
+        @if $media == $name {
+            @if (str-index($name, '-only')) {
+                @media (min-width: #{nth($value, 1)}) and (max-width: #{nth($value, 2)}) { @content; }
+            } @else if (str-index($name, '-down')){
+                @media (max-width: #{nth($value, 1)}) { @content; }
+            } @else {
+                @media (min-width: #{nth($value, 1)}) { @content; }
+            }
+        }
+    }
+}
+
+// How to use it:
+
+// @include resp($media)
+
+//                          ||||    $sm-only: 0 to 767px        ||||    $sm: 0 to infinite;
+//  $md-down: 0 to 767px    ||||    $md-only: 768px to 1023px   ||||    $md: 768px to infinite;
+//  $lg-down: 0 to 1023px   ||||    $lg-only: 1024px to 1439px  ||||    $lg: 1024px to infinite;
+//                          ||||                                ||||    $xl: 1440px to infinite;
+
 // VARIABLES
 
 

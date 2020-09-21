@@ -2,63 +2,65 @@
 // _______________________________________________________________
 
 
-// NORMALIZE
+
+// ABSTRACTS
+// Helper files and tools that configures the project (don't output CSS)
 // _______________________________________________________________
+@import
+  './assets/sass/abstracts/variables',
+  './assets/sass/abstracts/mixins';
+  //'./assets/sass/abstracts/functions';
 
-@import "./normalize";
 
 
-
-
-// VARIABLES
+// VENDORS
+// Vendor files, 3rd party, external libraries
 // _______________________________________________________________
-
-@import "./assets/sass/variables";
-
-
+@import
+  './assets/sass/vendors/normalize';
 
 
-// PLACEHOLDERS
+
+// BASE
+// Standard code, structure & rules used throughout projects
 // _______________________________________________________________
+@import
+  './assets/sass/base/base',
+  './assets/sass/base/reset',
+  //'./assets/sass/base/helpers',
+  //'./assets/sass/base/fonts',
+  './assets/sass/base/typography';
 
-@import "./assets/sass/placeholders";
 
 
-
-
-// MIXINS
+// LAYOUT
+// Grid-system and styles for header, footer, etc.
 // _______________________________________________________________
+@import
+  './assets/sass/layout/grid-system';
+  //'./assets/sass/layout/header',
+  //'./assets/sass/layout/footer';
 
-@import "./assets/sass/mixins";
 
 
-
-
-// GRID SYSTEM
+// COMPONENTS
+// Contains all the components / modules of the project
 // _______________________________________________________________
-
-@import "./assets/sass/grid-system";
-
-
+@import
+  './assets/sass/components/button';
 
 
-// FONTS
+
+// PAGES
+// Specific styles for specific pages
 // _______________________________________________________________
-
-@import "./assets/sass/typography";
-
-
+// @import
+//   './assets/sass/pages/home';
 
 
-// GLOBAL
+
+// THEMES
+// Alternate theme styles
 // _______________________________________________________________
-
-@import "./assets/sass/global";
-
-
-
-
-// STYLES
-// _______________________________________________________________
-
-@import "./assets/sass/layout";
+// @import
+//   './assets/sass/themes/default';

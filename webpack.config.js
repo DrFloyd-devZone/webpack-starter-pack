@@ -5,7 +5,7 @@ module.exports = {
     
     entry: {
         app: './src/index.js',
-        vendor: './src/vendor.js'
+        vendor: './src/vendors.js'
     }, 
 
     plugins: [
